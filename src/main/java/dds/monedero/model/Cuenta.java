@@ -4,7 +4,9 @@ import dds.monedero.exceptions.MaximaCantidadDepositosException;
 import dds.monedero.exceptions.MaximoExtraccionDiarioException;
 import dds.monedero.exceptions.MontoNegativoException;
 import dds.monedero.exceptions.SaldoMenorException;
+import dds.monedero.model.movimientos.Deposito;
 import dds.monedero.model.movimientos.Movimiento;
+import dds.monedero.model.movimientos.Retiro;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -29,7 +31,8 @@ public class Cuenta {
 
   public void poner(double cuanto) {
     if(cantidadPositiva(cuanto) && depositosDiariosDisponibles()){
-      new Movimiento(LocalDate.now(), cuanto, true).agregateA(this);
+      agregarMovimiento(new Deposito(LocalDate.now(), cuanto));
+      saldo += cuanto;
     }
   }
 
@@ -51,7 +54,8 @@ public class Cuenta {
 
   public void sacar(double cuanto) {
     if (cantidadPositiva(cuanto) && suficienteSaldoEnCuenta(cuanto) && cuantoDentroDelLimiteDiario(cuanto)) {
-      new Movimiento(LocalDate.now(), cuanto, false).agregateA(this); // agregarMovimiento()
+      agregarMovimiento(new Retiro(LocalDate.now(), cuanto));
+      saldo -= cuanto;
     }
   }
 

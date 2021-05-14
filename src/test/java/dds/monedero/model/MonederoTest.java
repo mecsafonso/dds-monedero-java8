@@ -5,6 +5,7 @@ import dds.monedero.exceptions.MaximoExtraccionDiarioException;
 import dds.monedero.exceptions.MontoNegativoException;
 import dds.monedero.exceptions.SaldoMenorException;
 import dds.monedero.model.movimientos.Movimiento;
+import dds.monedero.model.movimientos.Retiro;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -101,7 +102,7 @@ public class MonederoTest {
 
   @Test
   void UnMovimientoTieneFechaDeCreacion(){
-    Movimiento movimiento = new Movimiento(LocalDate.now().minusDays(1), 10, false);
+    Movimiento movimiento = new Retiro(LocalDate.now().minusDays(1), 10);
     Assertions.assertTrue(movimiento.esDeLaFecha(LocalDate.now().minusDays(1)));
   }
 
