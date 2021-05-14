@@ -12,7 +12,7 @@ import java.util.List;
 
 public class Cuenta {
 
-  private double saldo = 0; // El saldo se puede calcular. Temporary Field
+  private double saldo = 0;
   private List<Movimiento> movimientos = new ArrayList<>();
 
   public Cuenta() {
