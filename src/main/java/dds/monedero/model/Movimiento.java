@@ -2,7 +2,7 @@ package dds.monedero.model;
 
 import java.time.LocalDate;
 
-public class Movimiento {
+public class Movimiento { // Divergent Change
   private LocalDate fecha;
   // Nota: En ningún lenguaje de programación usen jamás doubles (es decir, números con punto flotante) para modelar dinero en el mundo real.
   // En su lugar siempre usen numeros de precision arbitraria o punto fijo, como BigDecimal en Java y similares
@@ -44,12 +44,12 @@ public class Movimiento {
     return !esDeposito;
   }
 
-  public void agregateA(Cuenta cuenta) {
+  public void agregateA(Cuenta cuenta) { // Middle Man?
     cuenta.setSaldo(calcularValor(cuenta));
     cuenta.agregarMovimiento(fecha, monto, esDeposito);
   }
 
-  public double calcularValor(Cuenta cuenta) {
+  public double calcularValor(Cuenta cuenta) { // Middle Man?
     if (esDeposito) {
       return cuenta.getSaldo() + getMonto();
     } else {
