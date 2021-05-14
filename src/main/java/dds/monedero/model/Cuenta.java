@@ -4,6 +4,7 @@ import dds.monedero.exceptions.MaximaCantidadDepositosException;
 import dds.monedero.exceptions.MaximoExtraccionDiarioException;
 import dds.monedero.exceptions.MontoNegativoException;
 import dds.monedero.exceptions.SaldoMenorException;
+import dds.monedero.model.movimientos.Movimiento;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -57,8 +58,7 @@ public class Cuenta {
     new Movimiento(LocalDate.now(), cuanto, false).agregateA(this); // agregarMovimiento()
   }
 
-  public void agregarMovimiento(LocalDate fecha, double cuanto, boolean esDeposito) { // Long Parameter List
-    Movimiento movimiento = new Movimiento(fecha, cuanto, esDeposito);
+  public void agregarMovimiento(Movimiento movimiento) {
     movimientos.add(movimiento);
   }
 
